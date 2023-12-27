@@ -1,4 +1,3 @@
-# ILP (artículo "greedy heuristics")
 import networkx as nx
 import math
 from gurobipy import *

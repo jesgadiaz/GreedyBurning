@@ -1,3 +1,4 @@
+# ILP CMCP (artículo "greedy heuristics")
 import networkx as nx
 import math
 from gurobipy import *
@@ -7,6 +8,7 @@ import time
 # Cargar grafo
 def loadGraph(input_file):
     global d
+    global G
     G = nx.Graph()
     for j in range(0,n):
         G.add_node(j)
@@ -39,36 +41,10 @@ def loadGraph(input_file):
     print("n: " + str(G.number_of_nodes()))
     print("m: " + str(G.number_of_edges()))
     print("ncc: " + str(nx.number_connected_components(G)))
-
-       
-def coversAllVertices(s,k,n):
-    vertices = []
-    for i in range(n):
-        covered = False
-        for j in range(len(s)):
-            try:
-                try:
-                    if i >= s[j]:
-                        if d[i][s[j]] <= k - (s.index(s[j]) + 1):
-                            covered = True
-                    else:
-                        if d[s[j]][i] <= k - (s.index(s[j]) + 1):
-                            covered = True
-                except:
-                    covered = False
-            except:
-                pass
-        if covered:
-            vertices.append(i)
-    #print(len(vertices))
-    #print(s)
-    if len(vertices) == n:
-        return True
-    else:
-        return False
     
-def ILP(k):
+def ILP(U,w):
     global d
+    global G
     m = Model("mip1")
     m.Params.outputFlag = 0  # 0 - Off  //  1 - On
     m.setParam("MIPGap", 0.0);
@@ -76,91 +52,87 @@ def ILP(k):
     m.setParam("TimeLimit", 2*3600000)
 
     # Definir variables
-    b  = [0] * n # b_{j}
-    x  = [ [0] * n for i in range(k)] # x_{r,j}
+    b  = [ [0] * n for i in range(U)] # b_{i,j}
+    s  = [ [0] * n for i in range(U)] # s_{i,j}
+    bj = [0] * U                      # b_j
 
-    for j in range(n):
-        b[j] = m.addVar(vtype=GRB.BINARY, name="b,%s" % str(j+1))
-
-    for r in range(k):
+    for j in range(U):
+        bj[j] = m.addVar(vtype=GRB.BINARY, name="b,%s" % str(j+1))
+    for j in range(U):
         for i in range(n):
-            x[r][i] = m.addVar(vtype=GRB.BINARY, name="x,%s" % str(r+1) + "," + str(i+1))
+            b[j][i] = m.addVar(vtype=GRB.BINARY, name="b,%s" % str(j+1) + "," + str(i+1))
+    for j in range(U):
+        for i in range(n):
+            s[j][i] = m.addVar(vtype=GRB.BINARY, name="s,%s" % str(j+1) + "," + str(i+1))
 
     # Función objetivo
     # (1)
-    m.setObjective(sum(b), GRB.MAXIMIZE)#------------------------(1)--
+    m.setObjective(sum(bj), GRB.MINIMIZE)#------------------------(1)--
 
     # Restricciones
+
     # (2)
-    for r in range(k):
+    for j in range(U):
+        for i in range(n):
+            suma = 0
+            closed_neighbors = [u for u in G.neighbors(i)]
+            closed_neighbors.append(i)
+            for k in closed_neighbors:
+                if j == 0:
+                    suma += 0
+                else:
+                    suma += b[j-1][k]
+            m.addConstr(b[j][i] <= s[j][i] + suma)
+
+    # (3)
+    for j in range(U):
         suma = 0
         for i in range(n):
-            suma += x[r][i]
-        m.addConstr(suma == 1)
-    
-    # (3)
-    for j in range(n):
-        suma = 0
-        for r in range(k):
-            for i in range(n):
-                if i >= j:
-                    if d[i][j] <= r:
-                        suma += x[r][i]
-                else:
-                    if d[j][i] <= r:
-                        suma += x[r][i]
-        m.addConstr(b[j] <= suma)
+            suma += s[j][i]
+        m.addConstr(suma == w)
+
+    # (4)
+    for j in range(U):
+        for i in range(n):
+            m.addConstr(bj[j] >= 1-b[j][i])
     
     # Solve
     m.optimize()
     runtime = m.Runtime
-    #print("Obj:", m.objVal)
-    x_out = [[0]*n for i in range(int(m.objVal))]
+    print("Obj:", m.objVal)
+    print("b(G):", str(m.objVal+1))
+    s_out = [[0] * n for i in range(U)]
     for v in m.getVars():
         varName = v.varName
         varNameSplit = varName.split(',')
-        if varNameSplit[0] == 'x':
-            x_out[int(varNameSplit[1])-1][int(varNameSplit[2])-1] = (v.x)
+        if varNameSplit[0] == 's':
+            s_out[int(varNameSplit[1])-1][int(varNameSplit[2])-1] = (v.x)
     # Sequence
     s = []
-    for r in reversed(range(k)):
-        # Construct burning sequence
-        i = 0
-        for e in x_out[r]:
-            if e == 1:
-                s.append(i)
-                break
-            i += 1
+    for i in range(w):
+        s.append([])
+    for j in range(int(m.objVal)+1):
+        p = 0
+        for i in range(n):
+            if s_out[j][i] == 1:
+                s[p].append(i)
+                p += 1
+
     # Report results
-    #print("OPT: " + str(s))
-    #print("Max. coverage: " + str(m.objVal))
-    #print("The run time is %f" % runtime)
+    print("Solution: " + str(s[:int(m.objVal)+1]))
+    print("The run time is %f" % runtime)
     #print("Final MIP gap value: %f" % m.MIPGap)
 
     return s
 
-# Binary search
-def main(ni, mi, input_file, l, h):
+def main(ni, mi, input_file, Ui):
     n = ni
     m = mi
+    w = 1
+    U = Ui
     loadGraph(input_file)
     start_time = time.time()
-    while l <= h:
-        k = math.floor((l + h) /2)
-        #print("--------------------")
-        #print("k: " + str(k))
-        s = ILP(k)
-        if coversAllVertices(s,k,n):
-            h = k - 1
-            bs = s.copy()
-            bs_size = k
-        else:
-            l = k + 1
-    # Best solution
-    print("Best solution: ")
-    print(bs)
-    print("b(G): " + str(len(bs)))
-    print("Total time: " + str(time.time()-start_time))
+    s = ILP(U,w)
 
 if __name__ == "__main__":
     bs = []
@@ -170,8 +142,8 @@ if __name__ == "__main__":
     bs_size = float("inf")
     folder_dataset = 'C:/Users/perro/Documents/GBP/cpp/dataset/'
     dataset = [
-        ['karate.mtx',34,78,3,4], # instance, n, m, l, h
-        ['chesapeake.mtx',39,170,1,3], # instance, n, m, l, h
+        ['karate.mtx',34,78,3,4], # instance, n, m, l, h=U
+        ['chesapeake.mtx',39,170,1,3], # instance, n, m, l, h=U
         ['dolphins.mtx',62,159,2,6],
         ['rt-retweet.mtx',96,117,2,6],
         ['polbooks.mtx',105,441,2,5],
@@ -217,7 +189,6 @@ if __name__ == "__main__":
         print("instance: " + instance)
         n = dataset[i][1]
         m = dataset[i][2]
-        l = dataset[i][3]
-        h = dataset[i][4]
+        U = dataset[i][4]
         #loadGraph(folder_dataset + dataset[i][0])
-        main(n, m, folder_dataset + dataset[i][0], l, h)
+        main(n, m, folder_dataset + dataset[i][0], U)

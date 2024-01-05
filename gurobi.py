@@ -171,7 +171,7 @@ if __name__ == "__main__":
     bs_size = float("inf")
     folder_dataset = 'C:/Users/perro/Documents/GBP/cpp/dataset/'
     dataset = [
-        ['karate.mtx',34,78,3,4], # instance, n, m, l, h
+        ['karate.mtx',34,78,2,4], # instance, n, m, l, h
         ['chesapeake.mtx',39,170,1,3], # instance, n, m, l, h
         ['dolphins.mtx',62,159,2,6],
         ['rt-retweet.mtx',96,117,2,6],

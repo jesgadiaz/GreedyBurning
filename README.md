@@ -12,7 +12,7 @@ $ python guroby.py
 ```
 The data set must be specified at line 144 in the format:
 
-[name.mtx, n, m, l, h]
+['name.mtx', n, m, l, h]
 
 Your graph must be in mtx format:
 - Vertices are labeled from 1 to n.

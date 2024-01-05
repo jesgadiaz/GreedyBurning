@@ -43,9 +43,17 @@ Compile the code with:
 ```
 $ gcc main.cpp -o output.exe
 ```
+or
+```
+$ gcc main.cpp -o output
+```
 Run with,
 ```
 $ output.exe
+```
+or
+```
+$ ./output
 ```
 The output reports the time consumed by breadth-first search, burning farthest first, and the heuristic. The best-found solution is reported with vertices labeled from 0 to n-1.
 

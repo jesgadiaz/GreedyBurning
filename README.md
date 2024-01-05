@@ -8,7 +8,7 @@ This repository contains:
 # Integer Linear Program
 It models the GBP as a series of CMCPs. To run this implementation, you need Gurobi installed. Afterward, on a terminal, run the command:
 ```
-$ python ILP.py
+$ python guroby.py
 ```
 The data set must be specified at line 144 in the format:
 
@@ -41,11 +41,11 @@ The data set must be specified at line 240.
 The heuristic must be selected at line 239: Gr or GrP.
 Compile the code with:
 ```
-$ gcc main.cpp -o output.exe
+$ gcc greedy.cpp -o output.exe
 ```
 or
 ```
-$ gcc main.cpp -o output
+$ gcc greedy.cpp -o output
 ```
 Run with,
 ```

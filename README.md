@@ -1,4 +1,4 @@
-# Algorithms for graph burning problem.
+# Algorithms for graph burning problem
 This repository contains:
 - One integer linear program (ILP) for graph burning problem (GBP) modeled as a series of clustered maximum coverage problems (CMCPs).
 - Two greedy heuristics for GBP.

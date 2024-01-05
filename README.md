@@ -31,3 +31,19 @@ Your graph must be in mtx format:
 For instance,
 
 ['karate.mtx', 34, 78, 3, 4]
+
+The output reports the total time consumed (Netowrkx's breadth-first search and Gurobi) and the optimal solution.
+
+![karate_output](https://github.com/jesgadiaz/GreedyBurning/imgs/karate_gurobi.png?raw=true)
+
+# Greedy heuristics
+The data set must be specified at line 240.
+The heuristic must be selected at line 239: Gr or GrP.
+Compile the code with:
+```
+$ gcc main.cpp -o output.exe
+```
+Run with,
+```
+$ output.exe
+```

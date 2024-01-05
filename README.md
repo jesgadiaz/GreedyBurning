@@ -34,7 +34,7 @@ For instance,
 
 The output reports the total time consumed (Netowrkx's breadth-first search and Gurobi) and the optimal solution.
 
-![karate_output](https://github.com/jesgadiaz/GreedyBurning/tree/main/imgs/karate_gurobi.png?raw=true)
+![karate_output](https://github.com/jesgadiaz/GreedyBurning/blob/main/imgs/karate_gurobi.png?raw=true)
 
 # Greedy heuristics
 The data set must be specified at line 240.

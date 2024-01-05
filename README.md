@@ -18,10 +18,10 @@ Your graph must be in mtx format:
 - Vertices are labeled from 1 to n.
 - The first line has the number of vertices.
 - The second line has the number of edges.
-- The remaining lines have an edge.
-For instance, the mtx file of a path graph P_4 would be:
-4
-3
-1 2
-2 3
-3 4
+- The remaining lines have an edge.  
+For instance, the mtx file of a path graph P_4 would be:  
+4  
+3  
+1 2  
+2 3  
+3 4  

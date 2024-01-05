@@ -11,12 +11,14 @@ It models the GBP as a series of CMCPs. To run this implementation you need Guro
 $ python ILP.py
 ```
 The data set must be specified at line 144 with the format:
+
 [name.mtx, n, m, l, h]
+
 Your graph must be in mtx format:
--Vertices are labeled from 1 to n.
--The first line has the number of vertices.
--The second line has the number of edges.
--The remaining lines have an edge.
+- Vertices are labeled from 1 to n.
+- The first line has the number of vertices.
+- The second line has the number of edges.
+- The remaining lines have an edge.
 For instance, the mtx file of a path graph P_4 would be:
 4
 3

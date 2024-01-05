@@ -1,4 +1,4 @@
-# ILP CMCP (artículo "greedy heuristics")
+# ILP CMCP
 import networkx as nx
 import math
 from gurobipy import *

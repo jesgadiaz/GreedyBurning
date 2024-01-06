@@ -297,7 +297,7 @@ int main(int argc, char **argv) {
         cout << endl <<"BFF running time: " << time << " miliseconds" << endl;
         cout << "BFF burning sequence: " << endl;
         for(int v : best_burning_sequence){
-            cout << v << " ";
+            cout << v+1 << " ";
         }
         cout << endl << "Sequence size: " << best_burning_sequence.size() << endl;
         cout << endl;
@@ -332,7 +332,7 @@ int main(int argc, char **argv) {
         cout << endl << heuristic << " running time: " << time << " miliseconds" << endl;
         cout << "Best burning sequence: " << endl;
         for(int v : best_burning_sequence){
-            cout << v << " ";
+            cout << v+1 << " ";
         }
         cout << endl << "Sequence size: " << best_burning_sequence.size() << endl;
         cout << endl;

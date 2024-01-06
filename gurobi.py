@@ -1,4 +1,4 @@
-# ILP CMCP
+# ILP CMCP (artículo "greedy heuristics")
 import networkx as nx
 import math
 from gurobipy import *
@@ -13,6 +13,7 @@ def loadGraph(input_file):
         G.add_node(j)
 
     f = open(input_file, "r")
+    string = f.readline()
     string = f.readline()
     string = f.readline()
     for i in range(0, m):
@@ -160,6 +161,8 @@ def main(ni, mi, input_file, l, h):
     # Best solution
     print("Best solution: ")
     print(bs)
+    bs1 = [x+1 for x in bs]
+    print(bs1)
     print("b(G): " + str(len(bs)))
     print("Total time: " + str(time.time()-start_time))
 
@@ -172,7 +175,7 @@ if __name__ == "__main__":
     folder_dataset = 'C:/Users/perro/Documents/GBP/cpp/dataset/'
     dataset = [
         ['karate.mtx',34,78,2,4], # instance, n, m, l, h
-        ['chesapeake.mtx',39,170,1,3], # instance, n, m, l, h
+        ['chesapeake.mtx',39,170,1,3],
         ['dolphins.mtx',62,159,2,6],
         ['rt-retweet.mtx',96,117,2,6],
         ['polbooks.mtx',105,441,2,5],
@@ -210,7 +213,16 @@ if __name__ == "__main__":
         ['email-univ.mtx',1133,5451,2,6],
         ['econ-mahindas.mtx',1258,7513,2,6],
         ['ia-fb-messages.mtx',1266,6451,2,6],
-        ['bio-yeast.mtx',1458,1948,4,11]
+        ['bio-yeast.mtx',1458,1948,4,11],
+        ['tech-routers-rf.mtx',2113,6632,3,8],
+        ['chameleon.mtx',2277,36101,3,8],
+        ['tvshow.mtx',3892,17262,5,13],
+        ['facebook.mtx',4039,88234,2,5],
+        ['DD6.mtx',4152,10320,9,25],
+        ['squirrel.mtx',5201,198493,2,6],
+        ['politician.mtx',5908,41729,3,9],
+        ['government.mtx',7057,89455,3,7],
+        ['crocodile.mtx',11631,170918,3,7]
         ]
     for i in range(len(dataset)):
         print("________________________________________________")

@@ -160,7 +160,7 @@ def main(ni, mi, input_file, l, h):
             l = k + 1
     # Best solution
     print("Best solution: ")
-    print(bs)
+    #print(bs)
     bs1 = [x+1 for x in bs]
     print(bs1)
     print("b(G): " + str(len(bs)))

@@ -34,7 +34,7 @@ For instance,
 
 ['karate.mtx', 34, 78, 3, 4]
 
-The output reports the total time consumed (Networkx's breadth-first search and Gurobi) and the optimal solution with vertices labeled from 0 to n-1.
+The output reports the total time consumed (Networkx's breadth-first search and Gurobi) and the optimal solution with vertices labeled from 1 to n.
 
 ![karate_output](https://github.com/jesgadiaz/GreedyBurning/blob/main/imgs/karate_gurobi.png?raw=true)
 
@@ -57,6 +57,6 @@ or
 ```
 $ ./output
 ```
-The output reports the time consumed by breadth-first search, burning farthest first, and the heuristic. The best-found solution is reported with vertices labeled from 0 to n-1.
+The output reports the time consumed by breadth-first search, burning farthest first, and the heuristic. The best-found solution is reported with vertices labeled from 1 to n.
 
 ![karate_output](https://github.com/jesgadiaz/GreedyBurning/blob/main/imgs/karate_gr.png?raw=true)

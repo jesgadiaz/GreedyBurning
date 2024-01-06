@@ -19,7 +19,7 @@ Your graph must be in mtx format:
 - The first line has the number of vertices.
 - The second line has the number of edges.
 - The third line is the optimal solution (if any).
-- The remaining lines have an edge. For instance, the mtx file of a path graph P_4 would be:  
+- The remaining lines are edges. For instance, the mtx file of a path graph P_4 would be:  
 4  
 3  
 2,4  

@@ -257,6 +257,7 @@ int main(int argc, char **argv) {
             getline(myfile, line);
             m = stoi(line);
             cout << "m: " << m << endl;
+            getline(myfile, line);
             while (getline(myfile, line)) {
                 istringstream iss(line);
                 string s;

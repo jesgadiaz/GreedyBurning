@@ -22,7 +22,6 @@ vector<vector<int>> allPairsDistance() {
     for (int start=0 ; start<n ; start++){
         vector<bool> visited(n, false);
         queue<int> q;
-        vector<int> traversal;
         vector<int> d_local(graph.size(), numeric_limits<int>::max());
         d_local[start] = 0;
         visited[start] = true;
@@ -46,7 +45,7 @@ vector<vector<int>> allPairsDistance() {
     return distance;
 }
 
-bool validBurningSequence(vector<int> s, int n){
+bool validBurningSequence(vector<int> &s, int n){
     int counter = 0;
     for(int i=0;i<n;i++){
         int b = s.size();
@@ -133,19 +132,18 @@ vector<int> Gr(int n, int k){
         }
     A.push_back(a);
     }
-    vector<int> idxToDelete;
+    
     for(int r=k-1;r>=0;r--){
         if(r<k-1){
             for(int i=0;i<n;i++){
                 for(int j=0;j<A[i].size();j++){
                     if(d[i][A[i][j]] > r || C[A[i][j]]==1){
-                        idxToDelete.push_back(j);
+                        // remove vertex in O(1)
+                        A[i][j]=A[i].back();
+                        A[i].pop_back();
+                        j--;
                     }
                 }
-                for(int z=idxToDelete.size()-1;z>=0;z--){
-                    A[i].erase(A[i].begin()+idxToDelete[z]);
-                }
-                idxToDelete.clear();
             }
         }
         max_value        = 0;
@@ -181,7 +179,7 @@ vector<int> GrP(int n, int k){
     }
     vector<vector<int>> A; // copy
     int burned_vertices;
-    vector<int> idxToDelete;
+    
 
     for(int rep=0;rep<n;rep++){
         for(int i=0;i<n;i++){
@@ -193,13 +191,12 @@ vector<int> GrP(int n, int k){
                 for(int i=0;i<n;i++){
                     for(int j=0;j<A[i].size();j++){
                         if(d[i][A[i][j]] > r || C[A[i][j]]==1){
-                            idxToDelete.push_back(j);
+                            // remove vertex in O(1)
+                            A[i][j]=A[i].back();
+                            A[i].pop_back();
+                            j--;
                         }
                     }
-                    for(int z=idxToDelete.size()-1;z>=0;z--){
-                        A[i].erase(A[i].begin()+idxToDelete[z]);
-                    }
-                    idxToDelete.clear();
                 }
             }
             if(r==k-1){

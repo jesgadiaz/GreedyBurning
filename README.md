@@ -3,7 +3,7 @@ This repository contains:
 - One integer linear program (ILP) for graph burning problem (GBP) modeled as a series of clustered maximum coverage problems (CMCPs).
 - Two greedy heuristics for GBP.
 
-(A PrePrint is soon to be published.)
+Check our Preprint ["A greedy heuristic for graph burning"](https://pages.github.com/](https://arxiv.org/abs/2401.07577).
 
 # Integer Linear Program
 It models the GBP as a series of CMCPs. To run this implementation, you need Gurobi installed. Afterward, on a terminal, run the command:

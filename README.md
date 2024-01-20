@@ -5,6 +5,16 @@ This repository contains:
 
 Check our Preprint ["A greedy heuristic for graph burning"](https://arxiv.org/abs/2401.07577).
 
+# Citation
+
+<a id="1">[1]</a> Jesús García-Díaz and José Alejandro COrnejo Acosta. "A Greedy Heuristic for Graph Burning." ArXiv PrePrint, January (2024). [https://doi.org/10.48550/arXiv.2401.07577](https://doi.org/10.48550/arXiv.2401.07577).
+
+# Contact
+
+* jesgadiaz@inaoep.mx
+* alexcornejo@inaoep.mx
+* https://www.prime.cic.ipn.mx/~jesgadiaz/
+
 # Integer Linear Program
 It models the GBP as a series of CMCPs. To run this implementation, you need Gurobi installed. Afterward, on a terminal, run the command:
 ```

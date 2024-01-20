@@ -9,7 +9,7 @@ This repository contains:
 
 # Contact
 
-* jesgadiaz@inaoep.mx
+* jesus.garcia@conahcyt.mx
 * alexcornejo@inaoep.mx
 * https://www.prime.cic.ipn.mx/~jesgadiaz/
 

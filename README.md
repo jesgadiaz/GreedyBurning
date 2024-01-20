@@ -3,8 +3,6 @@ This repository contains:
 - One integer linear program (ILP) for graph burning problem (GBP) modeled as a series of clustered maximum coverage problems (CMCPs).
 - Two greedy heuristics for GBP.
 
-Check our Preprint ["A greedy heuristic for graph burning"](https://arxiv.org/abs/2401.07577).
-
 # Citation
 
 <a id="1">[1]</a> Jesús García-Díaz and José Alejandro COrnejo Acosta. "A Greedy Heuristic for Graph Burning." ArXiv PrePrint, January (2024). [https://doi.org/10.48550/arXiv.2401.07577](https://doi.org/10.48550/arXiv.2401.07577).

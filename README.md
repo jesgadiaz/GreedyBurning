@@ -1,6 +1,8 @@
 # Algorithms for graph burning problem
 This repository contains:
-- One integer linear program (ILP) for graph burning problem (GBP) modeled as a series of clustered maximum coverage problems (CMCPs).
+- A Gurobi implementation of:
+  - Two integer linear programs (ILP) for graph burning problem (GBP): ILP-PROP and ILP-COV.
+  - An algorithm for GBP modeled as a series of clustered maximum coverage problems (CMCPs). Each CMCP is formulated as an ILP: ILP-CMCP.
 - Two greedy heuristics for GBP.
 
 # Citation

@@ -15,12 +15,20 @@ This repository contains:
 * alexcornejo@inaoep.mx
 * https://www.prime.cic.ipn.mx/~jesgadiaz/
 
-# Integer Linear Program
-It models the GBP as a series of CMCPs. To run this implementation, you need Gurobi installed. Afterward, on a terminal, run the command:
+# Integer Linear Programs
+To run this implementations, you need Gurobi installed. Afterward, on a terminal, run the command:
 ```
-$ python guroby.py
+$ python ILP-PROP.py
 ```
-The data set must be specified at line 144 in the format:
+or
+```
+$ python ILP-COV.py
+```
+or 
+```
+$ python ILP-CMCP.py
+```
+The data set must be specified in the format:
 
 ['name.mtx', n, m, l, h]
 
@@ -28,7 +36,7 @@ Your graph must be in mtx format:
 - Vertices are labeled from 1 to n.
 - The first line has the number of vertices.
 - The second line has the number of edges.
-- The third line has an optimal solution.
+- The third line has an optimal solution (if it is available).
 - The remaining lines are edges. For instance, the mtx file of a path graph P_4 would be:  
 4  
 3  

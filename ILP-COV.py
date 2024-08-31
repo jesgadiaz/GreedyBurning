@@ -133,7 +133,7 @@ def ILP(L,k):
 
     return s
 
-# Binary search
+# 
 def main(ni, mi, input_file, Li, Ui):
     n = ni
     m = mi

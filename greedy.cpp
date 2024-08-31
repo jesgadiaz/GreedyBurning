@@ -300,7 +300,7 @@ int main(int argc, char **argv) {
         cout << endl;
         // Set lower and upper bounds
         int low  = ceil(best_burning_sequence.size()+2)/3;
-        int high = best_burning_sequence.size();
+        int high = best_burning_sequence.size()-1;
         cout << "lower bound: " << low << endl;
         cout << "upper bound: " << high << endl;
         // Binary search

@@ -11,7 +11,7 @@ This repository contains:
 
 # Contact
 
-* jesus.garcia@conahcyt.mx
+* jesus.garcia@secihti.mx
 * alexcornejo@inaoep.mx
 * https://www.prime.cic.ipn.mx/~jesgadiaz/
 

@@ -13,6 +13,7 @@ This repository contains:
 
 * jesus.garcia@secihti.mx
 * alexcornejo@inaoep.mx
+* joel.trejo@cimat.mx
 * https://www.prime.cic.ipn.mx/~jesgadiaz/
 
 # Integer Linear Programs

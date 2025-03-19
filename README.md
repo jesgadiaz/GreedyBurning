@@ -7,7 +7,7 @@ This repository contains:
 
 # Citation
 
-<a id="1">[1]</a> Jesús García-Díaz and José Alejandro Cornejo Acosta. "A greedy heuristic for graph burning." Computing, Springer, March (2025). [https://doi.org/10.1007/s00607-025-01436-9](https://doi.org/10.1007/s00607-025-01436-9).
+<a id="1">[1]</a> Jesús García-Díaz, José Alejandro Cornejo-Acosta, and Joel Antonio Trejo-Sánchez. "A greedy heuristic for graph burning." Computing, Springer, March (2025). [https://doi.org/10.1007/s00607-025-01436-9](https://doi.org/10.1007/s00607-025-01436-9).
 
 # Contact
 

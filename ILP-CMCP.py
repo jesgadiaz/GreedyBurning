@@ -129,7 +129,7 @@ def ILP(k):
         # Construct burning sequence
         i = 0
         for e in x_out[r]:
-            if e == 1:
+            if e > 0.9:
                 s.append(i)
                 break
             i += 1

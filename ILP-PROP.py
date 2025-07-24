@@ -115,7 +115,7 @@ def ILP(U,w):
     for j in range(burning_number):
         p = 0
         for i in range(n):
-            if s_out[j][i] == 1:
+            if s_out[j][i] > 0.9:
                 s[p].append(i)
                 p += 1
 
